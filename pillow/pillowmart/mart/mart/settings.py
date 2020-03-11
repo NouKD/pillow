@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pillow.apps.PillowConfig',
+    'configuration.apps.ConfigurationConfig',
+    'commerce.apps.CommerceConfig',
+    'blog.apps.BlogConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
