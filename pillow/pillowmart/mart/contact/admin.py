@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 #admin.site.register(models.NewsLetter)
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display =  ('nom','email','sujet','video','date_add', 'date_update', 'status',)
+    list_display =  ('nom','sujet','date_add', 'date_update', 'status',)
     list_filter =  ('status',)
     search_fields = ('nom',)
     date_hierarchy = 'date_add'
@@ -25,12 +25,9 @@ def _register(model, admin_class):
 _register(models.Contact, ContactAdmin)
 
 class NewsLetterAdmin(admin.ModelAdmin):
-    list_display =  ('email','date_add', 'date_update',)
+    list_display =  ('date_add', 'date_update','status')
     list_filter =  ('status',)
-    search_fields = ('email',)
     date_hierarchy = 'date_add'
-    list_display_links = ['email',]
-    ordering = ['email',]
     list_per_page = 10
     fieldsets = [
         ("infocategory",{'fields':['email',]}),

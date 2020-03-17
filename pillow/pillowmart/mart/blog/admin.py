@@ -53,9 +53,9 @@ def _register(model, admin_class):
 _register(models.Tag, TagAdmin)
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display =  ('tire','date_add', 'date_update', 'status','categorie','image_view')
+    list_display =  ('titre','date_add', 'date_update', 'status','categorie','image_view')
     list_filter =  ('status',)
-    search_fields = ('tire','categorie',)
+    search_fields = ('titre','categorie',)
     date_hierarchy = 'date_add'
     list_display_links = ['titre',]
     ordering = ['titre',]
@@ -91,10 +91,3 @@ def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
 _register(models.Commentaire, CommentaireAdmin)
-
-
-
-
-
-
-

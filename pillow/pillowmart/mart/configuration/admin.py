@@ -27,11 +27,9 @@ def _register(model, admin_class):
 _register(models.SocialAccount, SocialAccountAdmin)
 
 class SiteinfoAdmin(admin.ModelAdmin):
-    list_display =  ('email','date_add', 'date_update', 'status','logo_view')
+    list_display =  ('date_add', 'date_update', 'status','logo_view')
     list_filter =  ('status',)
     date_hierarchy = 'date_add'
-    list_display_links = ['email',]
-    ordering = ['email',]
     list_per_page = 10
     fieldsets = [
         ("infocategory",{'fields':['email','map_url','logo']}),
@@ -47,7 +45,7 @@ def _register(model, admin_class):
 _register(models.SiteInfo, SiteinfoAdmin)
 
 class PresentationAdmin(admin.ModelAdmin):
-    list_display =  ('nom','video','date_add', 'date_update', 'status','image_view')
+    list_display =  ('nom','date_add', 'date_update', 'status','image_view')
     list_filter =  ('status',)
     search_fields = ('nom',)
     date_hierarchy = 'date_add'
@@ -55,7 +53,7 @@ class PresentationAdmin(admin.ModelAdmin):
     ordering = ['nom',]
     list_per_page = 10
     fieldsets = [
-        ("infocategory",{'fields':['nom','video','description','video','image']}),
+        ("infocategory",{'fields':['nom','video','description','image']}),
         ("standare",{'fields':['status',]})
         ]
 
