@@ -59,9 +59,10 @@ class ArticleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_add'
     list_display_links = ['titre',]
     ordering = ['titre',]
+    filter_horizontal = ('tag',)
     list_per_page = 10
     fieldsets = [
-        ("infocategory",{'fields':['titre','image','description','contenue']}),
+        ("infocategory",{'fields':['titre','image','description','contenue','tag']}),
         ("standare",{'fields':['status',]})
         ]
 
