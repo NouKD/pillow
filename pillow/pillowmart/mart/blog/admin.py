@@ -22,25 +22,24 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ['titre',]
     filter_horizontal = ('tag',)
     list_per_page = 10
+    actions = ('active', 'desactive',)
 
-    def image_view(self,obj):
+      def active(self, request, queryset):
+          queryset.update(statut=True)
+          self.message_user(request, 'Activer une Article')
+      active.short_description = 'active Article'
+
+      def desactive(self, queryset, request):
+          queryset.update(statut = False)
+          self.message_user(request, 'Desactiver une Article')
+      desactive.short_description = 'desactive Article'
+
+    def image_view(self,obj)
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.image.url))    
     
 class ArticleInline(admin.TabularInline):
     model = models.Catégorie
     extra = 0
-    
-
-    actions = ["activate" ,"deactivate"]
-
-    def activate (self, request, queryset):
-        queryset.update(status = True)
-        self.message_user(request,"la sélection à été activé avec succès")
-    deactive.short_description = 'Activer'
-    def deactivate (self, request, queryset):
-        queryset.update(status = False)
-        self.message_user(request,"la sélection à été desactivé avec succès")
-    active.short_description = 'Desactiver'
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
@@ -56,6 +55,17 @@ class CategorieArticleAdmin(admin.ModelAdmin):
     list_display_links = ['nom',]
     ordering = ['nom',]
     list_per_page = 10
+    actions = ('active', 'desactive',)
+
+      def active(self, request, queryset):
+          queryset.update(statut=True)
+          self.message_user(request, 'Activer une CategorieArticle')
+      active.short_description = 'active CategorieArticle'
+
+      def desactive(self, queryset, request):
+          queryset.update(statut = False)
+          self.message_user(request, 'Desactiver une CategorieArticle')
+      desactive.short_description = 'desactive CategrieAticle '
     inlines = [
         ArticleInline,
     ]
@@ -66,17 +76,6 @@ class CategorieArticleAdmin(admin.ModelAdmin):
 
     def image_view(self,obj):
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.image.url))    
-
-    actions = ["activate" ,"deactivate"]
-
-    def activate (self, request, queryset):
-        queryset.update(status = True)
-        self.message_user(request,"la sélection à été activé avec succès")
-    deactive.short_description = 'Activer'
-    def deactivate (self, request, queryset):
-        queryset.update(status = False)
-        self.message_user(request,"la sélection à été desactivé avec succès")
-    active.short_description = 'Desactiver'
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
@@ -92,25 +91,28 @@ class TagAdmin(admin.ModelAdmin):
     list_display_links = ['nom',]
     ordering = ['nom',]
     list_per_page = 10
+    actions = ('active', 'desactive',)
+
+      def active(self, request, queryset):
+          queryset.update(statut=True)
+          self.message_user(request, 'Activer une Tag')
+      active.short_description = 'active Tag'
+
+      def desactive(self, queryset, request):
+          queryset.update(statut = False)
+          self.message_user(request, 'Desactiver une Tag')
+      desactive.short_description = 'desactive Tag'
     fieldsets = [
         ("infocategory",{'fields':['nom','description']}),
         ("standare",{'fields':['status',]})
         ]
-    #actions = ["activate" ,"deactivate"]
-    def activate (self, request, queryset):
-        queryset.update(status = True)
-        self.message_user(request,"la sélection à été activé avec succès")
-    deactive.short_description = 'Activer'
-    def deactivate (self, request, queryset):
-        queryset.update(status = False)
-        self.message_user(request,"la sélection à été desactivé avec succès")
-    active.short_description = 'Desactiver'
-
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
 _register(models.Tag, TagAdmin)
+
+
 class CommentaireAdmin(admin.ModelAdmin):
     list_display =  ('nom','article','prenom','date_add', 'date_update', 'status',)
     list_filter =  ('status',)
@@ -119,22 +121,22 @@ class CommentaireAdmin(admin.ModelAdmin):
     list_display_links = ['nom',]
     ordering = ['nom',]
     list_per_page = 10
+    actions = ('active', 'desactive',)
+
+      def active(self, request, queryset):
+          queryset.update(statut=True)
+          self.message_user(request, 'Activer une Commentaire')
+      active.short_description = 'active Commentaire'
+
+      def desactive(self, queryset, request):
+          queryset.update(statut = False)
+          self.message_user(request, 'Desactiver une Commentaire')
+      desactive.short_description = 'desactive Commentaire'
     fieldsets = [
         ("infocategory",{'fields':['nom','prenom','article','commentaire']}),
         ("standare",{'fields':['status',]})
         ]
 
-    actions = ["activate" ,"deactivate"]
-
-    def activate (self, request, queryset):
-        queryset.update(status = True)
-        self.message_user(request,"la sélection à été activé avec succès")
-    deactive.short_description = 'Activer'
-    def deactivate (self, request, queryset):
-        queryset.update(status = False)
-        self.message_user(request,"la sélection à été desactivé avec succès")
-    active.short_description = 'Desactiver'
-    
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
