@@ -47,7 +47,7 @@ class Article(models.Model):
         verbose_name_plural = "Articles"
 
     def __str__(self):
-        return self.nom         
+        return self.titre         
 
 class Commentaire(models.Model):
     article = models.CharField(max_length = 255)

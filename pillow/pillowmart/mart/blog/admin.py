@@ -14,7 +14,7 @@ from actions import Actions
 
 class ArticleAdmin(Actions):
     fieldsets = [
-        ("infocategory",{'fields':['titre','image','description','contenue','tag']}),
+        ("infocategory",{'fields':['titre','image','description','categorie','contenue','tag']}),
         ("standare",{'fields':['status',]})
         ]
     list_display =  ('titre','date_add', 'date_update', 'status','categorie','image_view')
@@ -34,7 +34,7 @@ class ArticleAdmin(Actions):
         return mark_safe('<img src = "{url}/" width ="100px" height ="50px">'.format(url = obj.image.url))
 
 class ArticleInline(admin.TabularInline):
-    model = models.CategorieArticle
+    model = models.Article
     extra = 0
 
 class CategorieArticleAdmin(Actions):

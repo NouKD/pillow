@@ -28,7 +28,7 @@ class ProduitAdmin(Actions):
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.image.url))    
 
 class ProduitInline(admin.TabularInline):
-    model = models.Categorie
+    model = models.Produit
     extra = 0
 
 class CategorieAdmin(Actions):
