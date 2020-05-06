@@ -29,10 +29,10 @@ About
                 <div class="col-lg-8">
                     <div class="about_us_content">
                         <h5>Our Mission</h5>
-                        <h3>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.</h3>
+                        <h3>{{ presentation.description }}</h3>
                         <div class="about_us_video">
-                            <img src="/static/img/about_us_video.png" alt="#" class="img-fluid">
-                            <a class="about_video_icon popup-youtube" href="https://www.youtube.com/watch?v=DWHB6nTyKDI"></a>
+                            <img src="{{ presentation.image.url }}" alt="#" class="img-fluid">
+                            <a class="about_video_icon popup-youtube" href="{{ presentation.video }}"></a>
                         </div>
                     </div>
                 </div>
@@ -44,6 +44,8 @@ About
     <!-- feature part here -->
     <section class="feature_part section_padding">
         <div class="container">
+            
+        {% include "innovate_message.html" %}
             <div class="row justify-content-between">
                 <div class="col-lg-6">
                     <div class="feature_part_tittle">
@@ -121,7 +123,7 @@ About
         </div>
     </section>
     <!-- client review part end -->
-
+    {% include "temoignage.html" %}
     <!-- subscribe part here -->
     <section class="subscribe_part section_padding">
         <div class="container">

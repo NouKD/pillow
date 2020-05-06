@@ -2,6 +2,8 @@ from django.contrib import admin
 from . import models
 from django.utils.safestring import mark_safe
 from actions import Actions
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin 
 # Register your models here.
 
 #admin.site.register(models.SocialAccount)
@@ -22,10 +24,6 @@ class SocialAccountAdmin(Actions):
         ("standare",{'fields':['status',]})
         ]
 
-def _register(model, admin_class):
-    admin.site.register(model, admin_class)
-
-_register(models.SocialAccount, SocialAccountAdmin)
 
 class SiteinfoAdmin(Actions):
     list_display =  ('date_add', 'date_update', 'status','logo_view')
@@ -44,10 +42,6 @@ class SiteinfoAdmin(Actions):
     def detail_logo(self,obj):
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.logo.url))            
 
-def _register(model, admin_class):
-    admin.site.register(model, admin_class)
-
-_register(models.SiteInfo, SiteinfoAdmin)
 
 class PresentationAdmin(Actions):
     list_display =  ('nom','date_add', 'date_update', 'status','image_view')
@@ -69,10 +63,6 @@ class PresentationAdmin(Actions):
     def detail_image(self,obj):
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.image.url))     
 
-def _register(model, admin_class):
-    admin.site.register(model, admin_class)
-
-_register(models.Presentation, PresentationAdmin)
 
 class TemoignageAdmin(Actions):
     list_display =  ('nom','prenom','date_add', 'date_update', 'status','photo_view')
@@ -94,7 +84,24 @@ class TemoignageAdmin(Actions):
     def detail_photo(self,obj):
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.photo.url))    
 
+
+class UserAccountInline(admin.StackedInline):
+    model = models.UserAccount
+    can_delete = False
+
+
+class UserAdmin(BaseUserAdmin):
+    inlines = [UserAccountInline]
+
+
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
+
+admin.site.unregister(User)
+_register(models.SocialAccount, SocialAccountAdmin)
+_register(models.Presentation, PresentationAdmin)
+_register(models.SiteInfo, SiteinfoAdmin)
 _register(models.Temoignage, TemoignageAdmin)
+_register(User, UserAdmin)
+admin.site.register(models.OtherInfo)

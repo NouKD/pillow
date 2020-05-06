@@ -1,5 +1,5 @@
 from django.db import models
-
+from configuration.models import UserAccount
 # Create your models here.
 
 class CategorieArticle(models.Model):
@@ -38,6 +38,7 @@ class Article(models.Model):
     image = models.ImageField(upload_to='images/Article')
     tag = models.ManyToManyField(Tag,related_name="Tag_Article")
     categorie = models.ForeignKey(CategorieArticle, on_delete=models.CASCADE, related_name='Article')
+    auteur = models.ForeignKey(UserAccount, related_name='auteur_article', on_delete=models.CASCADE, null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now = True)
     status = models.BooleanField(default = True)
@@ -50,9 +51,11 @@ class Article(models.Model):
         return self.titre         
 
 class Commentaire(models.Model):
-    article = models.CharField(max_length = 255)
-    nom = models.CharField(max_length = 255)
-    prenom = models.CharField(max_length = 255)
+    article = models.ForeignKey(
+        Article, on_delete=models.CASCADE, related_name='commentaire_article')
+    user = models.ForeignKey(UserAccount, related_name='comment_user', on_delete=models.CASCADE, null=True)
+    #nom = models.CharField(max_length = 255)
+    #prenom = models.CharField(max_length = 255)
     commentaire = models.TextField()
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now = True)
@@ -63,4 +66,4 @@ class Commentaire(models.Model):
         verbose_name_plural = "commentaires"
 
     def __str__(self):
-        return self.nom         
+        return self.user         

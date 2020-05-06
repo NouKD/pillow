@@ -10,6 +10,9 @@ from actions import Actions
 #admin.site.register(models.Tag)
 #admin.site.register(models.Article)
 #admin.site.register(models.Commentaire)
+class CommentaireInline(admin.StackedInline):
+    model = models.Commentaire
+    extra = 1
 
 
 class ArticleAdmin(Actions):
@@ -26,6 +29,9 @@ class ArticleAdmin(Actions):
     filter_horizontal = ('tag',)
     list_per_page = 10
     readonly_fields = ['detail_image']
+    inlines = [
+        CommentaireInline
+        ]
 
     def image_view(self,obj):
         return mark_safe("<img src = '{url}'/ width='100px' height='50px'>".format(url=obj.image.url))    
@@ -35,7 +41,7 @@ class ArticleAdmin(Actions):
 
 class ArticleInline(admin.TabularInline):
     model = models.Article
-    extra = 0
+    extra = 1
 
 class CategorieArticleAdmin(Actions):
     list_display =  ('nom','date_add', 'date_update', 'status','image_view')
@@ -60,6 +66,10 @@ class CategorieArticleAdmin(Actions):
     def detail_image(self,obj):
         return mark_safe("<img src='{url}'/ width='100px' height='50px'>".format(url=obj.image.url))        
 
+class CathegorieArticleInline(admin.TabularInline):
+    model = models.Article
+    extra = 1
+
 
 class TagAdmin(Actions):
     list_display =  ('nom','date_add', 'date_update', 'status',)
@@ -75,19 +85,16 @@ class TagAdmin(Actions):
         ]
 
 
-
-
-
 class CommentaireAdmin(Actions):
-    list_display =  ('nom','article','prenom','date_add', 'date_update', 'status',)
-    list_filter =  ('status',)
-    search_fields = ('nom',)
+    list_display =  ('user', 'article', 'date_add', 'date_update', 'status',)
+    list_filter =  ('status', 'user', 'article')
+    search_fields = ('article', 'user',)
     date_hierarchy = 'date_add'
-    list_display_links = ['nom',]
-    ordering = ['nom',]
+    list_display_links = ['article',]
+    ordering = ['article',]
     list_per_page = 10
     fieldsets = [
-        ("infocategory",{'fields':['nom','prenom','article','commentaire']}),
+        ("infocategory",{'fields':['user','article','commentaire']}),
         ("standare",{'fields':['status',]})
         ]
 
