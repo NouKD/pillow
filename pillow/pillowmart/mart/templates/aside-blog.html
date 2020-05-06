@@ -1,0 +1,111 @@
+<div class="col-lg-4">
+    <div class="blog_right_sidebar">
+  
+  
+      <aside class="single_sidebar_widget search_widget">
+        <form action="#">
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search Keyword"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Search Keyword'"/>
+              <div class="input-group-append">
+                <button class="btn" type="button">
+                  <i class="ti-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            class="button rounded-0 primary-bg text-white w-100 btn_1"
+            type="submit">
+            Search
+          </button>
+        </form>
+      </aside>
+  
+  
+      <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">Category</h4>
+        <ul class="list cat-list">
+            {% for categorie in categories %}
+                <li>
+                  <a href="{% url 'blog' 'cath' cathegorie.id %}" class="d-flex">
+                    <p>{{ categorie.nom }}</p>
+                    {% comment %} <p>(37)</p> {% endcomment %}
+                  </a>
+                </li>
+            {% endfor %}
+        </ul>
+      </aside>
+  
+  
+      <aside class="single_sidebar_widget popular_post_widget">
+        <h3 class="widget_title">Recent Post</h3>
+        {% for recent_article in recent_articles %}
+        <div class="media post_item">
+          <img src="{{ recent_article.image.url }}" />
+          <div class="media-body">
+            <a href="{% url 'single-blog' recent_article.id %}">
+              <h3>{{ recent_article.titre|truncatechars:23 }}</h3>
+            </a>
+            <p>{{ recent_article.date_update|date:'d. F, Y' }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </aside>
+  
+  
+      <aside class="single_sidebar_widget tag_cloud_widget">
+        <h4 class="widget_title">Tag Clouds</h4>
+        <ul class="list">
+            {% for tag in tags %}
+            <li>
+              <a href="{% url 'blog' 'tag' tag.id %}">{{ tag.nom }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+      </aside>
+  
+  
+      <aside class="single_sidebar_widget instagram_feeds">
+        <h4 class="widget_title">Instagram Feeds</h4>
+        <ul class="instagram_row flex-wrap">
+            {% for instagramfeed in instagramfeeds %}
+            <li>
+                <a>
+                    <img class="img-fluid" src="{{ instagramfeed.image.url }}"/>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+      </aside>
+  
+  
+      <aside class="single_sidebar_widget newsletter_widget">
+        <h4 class="widget_title">Newsletter</h4>
+        <form method="POST" action="{% url 'newsletter' %}">
+            {% csrf_token %}
+          <div class="form-group">
+            <input type="email"
+              class="form-control"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Enter email'"
+              placeholder="Enter email"
+              name="newsletter" required/>
+          </div>
+          <button
+            class="button rounded-0 primary-bg text-white w-100 btn_1"
+            type="submit">
+            Subscribe
+          </button>
+        </form>
+      </aside>
+  
+  
+    </div>
+  </div>
+  
