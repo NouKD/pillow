@@ -34,7 +34,7 @@ Single blog
             <h2>{{ article.titre }}</h2>
             <ul class="blog-info-link mt-3 mb-4">
               <li>
-                <a href="{% url 'blog' 'cath' article.cathegorie_id %}"><i class="far fa-user"></i>{{ article.cathegorie }}</a>
+                <a href="{% url 'blog' 'categorie' article.categorie_id %}"><i class="far fa-user"></i>{{ article.categorie }}</a>
               </li>
               {% if commentaires %}
               <li>
@@ -222,11 +222,13 @@ Single blog
           </form>
         </div>
       </div>
-      {% include "pages/aside-blog.html" %}
+      {% include "aside-blog.html" %}
     </div>
   </div>
 </section>
 
    <!--================Blog Area end =================-->
    {% endblock content %}
+   {% block footer %}
+   {% endblock footer %}
    
