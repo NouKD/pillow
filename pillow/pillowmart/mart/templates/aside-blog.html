@@ -33,7 +33,7 @@
         <ul class="list cat-list">
             {% for categorie in categories %}
                 <li>
-                  <a href="{% url 'blog' 'cath' cathegorie.id %}" class="d-flex">
+                  <a href="{% url 'blog' %}" class="d-flex">
                     <p>{{ categorie.nom }}</p>
                     {% comment %} <p>(37)</p> {% endcomment %}
                   </a>

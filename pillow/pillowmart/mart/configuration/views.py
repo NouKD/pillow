@@ -22,9 +22,9 @@ def register(request):
     else:
         form = RegisterForm()
 
-    info_site = SiteInfo.objects.filter(status=True)[0]
+    info_site = SiteInfo.objects.filter(status=True)
     social_account = SocialAccount.objects.filter(status=True)
-    presentation = Presentation.objects.filter(status=True)[0]
+    presentation = Presentation.objects.filter(status=True)
     datas = {
         'form': form,
         'info_site': info_site,
