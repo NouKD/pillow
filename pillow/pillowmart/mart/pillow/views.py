@@ -75,3 +75,20 @@ def single_product (request):
     }
     return render (request,"single-product.html", datas) 
 
+def register (request):
+    datas={
+
+    }
+    return render (request,"register.html", datas)
+
+def aside_blog (request):
+    datas={
+
+    }
+    return render (request,"aside_blog.html", datas)
+
+def temoignage (request):
+    datas={
+
+    }
+    return render (request,"temoignage.html", datas)
