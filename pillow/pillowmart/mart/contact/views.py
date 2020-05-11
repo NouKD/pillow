@@ -26,7 +26,7 @@ def index(request):
         'presentation': presentation,
         'social_account': social_account,   
     }
-    return render(request, "index.html", datas)
+    return render(request, "pages/index.html", datas)
 
 def about(request):
     autresInfo = OtherInfo.objects.filter(status=True)
@@ -41,7 +41,7 @@ def about(request):
         'temoignage': temoignage,
         'social_account': social_account,
     }
-    return render(request, "about.html", datas)
+    return render(request, "pages/about.html", datas)
 
 def contact(request):
     contact_form = ContactForm(request.POST or None)
@@ -60,7 +60,7 @@ def contact(request):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "contact.html", datas)
+    return render(request, "pages/contact.html", datas)
 
 def newsletter(request):
     if request.method == 'Post':

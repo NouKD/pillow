@@ -31,7 +31,7 @@ def register(request):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "register.html", datas)
+    return render(request, "pages/register.html", datas)
 
 
 def login_page(request):
@@ -54,7 +54,7 @@ def login_page(request):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "login.html", datas)
+    return render(request, "pages/login.html", datas)
 
 
 def logout_page(request):

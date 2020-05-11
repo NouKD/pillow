@@ -25,7 +25,7 @@ def cart(request):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "cart.html", datas)
+    return render(request, "pages/cart.html", datas)
 
 
 
@@ -38,7 +38,7 @@ def checkout(request):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "checkout.html", datas)
+    return render(request, "pages/checkout.html", datas)
 
 
 
@@ -51,7 +51,7 @@ def confirmation(request):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "confirmation.html", datas)
+    return render(request, "pages/confirmation.html", datas)
 
 
 
@@ -87,7 +87,7 @@ def product_list(request, limit=6, search=None, filtre=None, idt=None):
         'produits_page': produits_page,
         'limit': limit,
     }
-    return render(request, "product_list.html", datas)
+    return render(request, "pages/product_list.html", datas)
 
 
 
@@ -123,4 +123,4 @@ def single_product(request, act=None, id=None):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "single-product.html", datas)
+    return render(request, "pages/single-product.html", datas)

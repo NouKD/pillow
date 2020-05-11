@@ -39,7 +39,7 @@ def blog(request, filtre=None, id=None):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "blog.html", datas)
+    return render(request, "pages/blog.html", datas)
 
 
 
@@ -80,4 +80,4 @@ def single_blog(request, id):
         'presentation': presentation,
         'social_account': social_account,
     }
-    return render(request, "single-blog.html", datas)
+    return render(request, "pages/single-blog.html", datas)
