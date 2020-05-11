@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pillow.apps.PillowConfig',
+    'pillowapp.apps.PillowappConfig',
     'configuration.apps.ConfigurationConfig',
     'commerce.apps.CommerceConfig',
     'blog.apps.BlogConfig',

@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('pillow.urls')),
+    path('', include('pillowapp.urls')),
     path('configuration/', include('configuration.urls')),
     path('commerce/', include('commerce.urls')),
     path('blog/', include('blog.urls')),
