@@ -5,7 +5,7 @@ urlpatterns = [
    path('', views.cart, name="cart"),
     path('checkout', views.checkout, name="checkout"),
     path('confirmation', views.confirmation, name="confirmation"),
-    path('product_list', views.product_list, name="product_list"),
+    #path('product_list', views.product_list, name="product_list"),
 
     path('list', views.product_list, name="product_list"),
     path('list/<int:limit>', views.product_list, name="product_list"),

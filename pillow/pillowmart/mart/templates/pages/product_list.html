@@ -39,13 +39,13 @@ Product list
                                 <div class="select_option_list">Category <i class="right fas fa-caret-down"></i> </div>
                                 <div class="select_option_dropdown">
                                     {% for categorie in categories %}
-                      <p><a href="{% url 'product_list' 'cath' cathegorie.id %}">{{ cathegorie.nom|capfirst }}</a></p>
+                      <p><a href="{% url 'product_list' 'categorie' categorie.id %}">{{ categorie.nom|capfirst }}</a></p>
                   {% endfor %}
               </div>
             </div>
           </div>
 
-          <!-- Nos produits ne possedent pas de type; juste des cathegories -->
+          <!-- Nos produits ne possedent pas de type; juste des categories -->
           {% comment %} <div class="single_sedebar">
             <div class="select_option">
               <div class="select_option_list">
@@ -89,7 +89,7 @@ Product list
         </div>
       </div>
       {% else %}
-        <h1>Aucun Produit Pour Cette Cathegorie</h1>
+        <h1>Aucun Produit Pour Cette Categorie</h1>
       {% endif %}
 
     </div>

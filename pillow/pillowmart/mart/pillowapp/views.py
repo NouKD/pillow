@@ -6,89 +6,89 @@ def index (request):
     datas={
 
     }
-    return render (request,"index.html", datas)
+    return render (request,"pages/index.html", datas)
 
 def about (request):
     datas={
 
     }
-    return render (request,"about.html", datas)
+    return render (request,"pages/about.html", datas)
 
 def blog (request):
     datas={
 
     }
-    return render (request,"blog.html", datas)
+    return render (request,"pages/blog.html", datas)
 
 def cart (request):
     datas={
 
     }
-    return render (request,"cart.html", datas)
+    return render (request,"pages/cart.html", datas)
 
 def checkout (request):
     datas={
 
     }
-    return render (request,"checkout.html", datas)    
+    return render (request,"pages/checkout.html", datas)    
 
 def confirmation (request):
     datas={
 
     }
-    return render (request,"confirmation.html", datas)
+    return render (request,"pages/confirmation.html", datas)
 
 
 def contact (request):
     datas={
 
     }
-    return render (request,"contact.html", datas) 
+    return render (request,"pages/contact.html", datas) 
 
 def login (request):
     datas={
 
     }
-    return render (request,"login.html", datas)    
+    return render (request,"pages/login.html", datas)    
 
 def elements (request):
     datas={
 
     }
-    return render (request,"elements.html", datas)
+    return render (request,"pages/elements.html", datas)
 
 def product_list (request):
     datas={
 
     }
-    return render (request,"product_list.html", datas)    
+    return render (request,"pages/product_list.html", datas)    
 
 def single_blog (request):
     datas={
 
     }
-    return render (request,"single-blog.html", datas) 
+    return render (request,"pages/single-blog.html", datas) 
 
 def single_product (request):
     datas={
 
     }
-    return render (request,"single-product.html", datas) 
+    return render (request,"pages/single-product.html", datas) 
 
 def register (request):
     datas={
 
     }
-    return render (request,"register.html", datas)
+    return render (request,"pages/register.html", datas)
 
 def aside_blog (request):
     datas={
 
     }
-    return render (request,"aside_blog.html", datas)
+    return render (request,"pages/aside_blog.html", datas)
 
 def temoignage (request):
     datas={
 
     }
-    return render (request,"temoignage.html", datas)
+    return render (request,"pages/temoignage.html", datas)
