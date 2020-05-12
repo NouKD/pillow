@@ -50,9 +50,9 @@ def contact(request):
             contact_form.save()
             contact_form = ContactForm()
     autresInfo = OtherInfo.objects.filter(status=True)
-    info_site = SiteInfo.objects.filter(status=True)
+    info_site = SiteInfo.objects.filter(status=True)[0]
     social_account = SocialAccount.objects.filter(status=True)
-    presentation = Presentation.objects.filter(status=True)
+    presentation = Presentation.objects.filter(status=True)[0]
     datas = {
         'autresInfo': autresInfo,
         'contact_form': contact_form,

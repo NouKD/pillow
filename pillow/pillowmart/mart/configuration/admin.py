@@ -12,7 +12,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 #admin.site.register(models.Temoignage)
 
 class SocialAccountAdmin(Actions):
-    list_display =  ('nom','liens','icone','date_add', 'date_update', 'status',)
+    list_display =  ('nom','liens','date_add', 'date_update', 'status',)
     list_filter =  ('status',)
     search_fields = ('nom',)
     date_hierarchy = 'date_add'
@@ -20,7 +20,7 @@ class SocialAccountAdmin(Actions):
     ordering = ['nom',]
     list_per_page = 10
     fieldsets = [
-        ("infocategory",{'fields':['nom','liens','icone','image']}),
+        ("infocategory",{'fields':['nom','liens','icone',]}),
         ("standare",{'fields':['status',]})
         ]
 
